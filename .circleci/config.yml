@@ -11,7 +11,7 @@ jobs:
           command: sudo pip install awscli
       - run:
           name: Deploy to S3
-          command: aws --version
+          command: aws ecr describe-repositories
 
 workflows:
   version: 2
