@@ -6,12 +6,16 @@ jobs:
       - image: circleci/python:2.7-jessie
     working_directory: ~/circleci-docs
     steps:
+      - setup_remote_docker
       - run:
           name: Install awscli
           command: sudo pip install awscli
       - run:
-          name: Deploy to S3
-          command: aws ecr get-login --no-include-email | bash
+          name: Get ECR login
+          command: aws ecr get-login --no-include-email > credentials
+      - run:
+          name: Logging at AWS ECR
+          command: bash credentials
 
 workflows:
   version: 2
