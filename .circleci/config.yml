@@ -11,7 +11,7 @@ jobs:
           command: sudo pip install awscli
       - run:
           name: Deploy to S3
-          command: aws ecr get-login --no-include-email
+          command: aws ecr get-login --no-include-email | bash
 
 workflows:
   version: 2
